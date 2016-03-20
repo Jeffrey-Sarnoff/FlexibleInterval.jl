@@ -10,22 +10,22 @@ abstract  OneBoundary          <: AnyBoundaries
 abstract  TwoBoundaries        <: AnyBoundaries
 abstract  ThreeBoundaries      <: AnyBoundaries
 
-immutable  OPened              <: OneBoundary     ; Opened             = OPened()
-immutable  CLosed              <: OneBoundary     ; Closed             = CLosed()
+immutable  OpeneD              <: OneBoundary     ; Opened             = OpeneD()
+immutable  CloseD              <: OneBoundary     ; Closed             = CloseD()
 
-immutable  OPenedOPened        <: TwoBoundaries   ; OpenedOpened       = OPenedOPened()      
-immutable  OPenedCLosed        <: TwoBoundaries   ; OpenedClosed       = OPenedCLosed()      
-immutable  CLosedOPened        <: TwoBoundaries   ; ClosedOpened       = CLosedOPened()      
-immutable  CLosedCLosed        <: TwoBoundaries   ; ClosedClosed       = CLosedCLosed()      
+immutable  OpenedOpeneD        <: TwoBoundaries   ; OpenedOpened       = OpenedOpeneD()      
+immutable  OpenedCloseD        <: TwoBoundaries   ; OpenedClosed       = OpenedCloseD()      
+immutable  ClosedOpeneD        <: TwoBoundaries   ; ClosedOpened       = ClosedOpeneD()      
+immutable  ClosedCloseD        <: TwoBoundaries   ; ClosedClosed       = ClosedCloseD()      
 
-immutable  OPenedOPenedOPened  <: ThreeBoundaries ; OpenedOpenedOpened = OPenedOPenedOPened()
-immutable  OPenedOPenedCLosed  <: ThreeBoundaries ; OpenedOpenedClosed = OPenedOPenedCLosed()
-immutable  OPenedCLosedOPened  <: ThreeBoundaries ; OpenedClosedOpened = OPenedCLosedOPened()
-immutable  OPenedCLosedCLosed  <: ThreeBoundaries ; OpenedClosedClosed = OPenedCLosedCLosed()
-immutable  CLosedOPenedOPened  <: ThreeBoundaries ; ClosedOpenedOpened = CLosedOPenedOPened()
-immutable  CLosedOPenedCLosed  <: ThreeBoundaries ; ClosedOpenedClosed = CLosedOPenedCLosed()
-immutable  CLosedCLosedOPened  <: ThreeBoundaries ; ClosedClosedOpened = CLosedCLosedOPened()
-immutable  CLosedCLosedCLosed  <: ThreeBoundaries ; ClosedClosedClosed = CLosedCLosedCLosed()
+immutable  OpenedOpenedOpeneD  <: ThreeBoundaries ; OpenedOpenedOpened = OpenedOpenedOpeneD()
+immutable  OpenedOpenedCloseD  <: ThreeBoundaries ; OpenedOpenedClosed = OpenedOpenedCloseD()
+immutable  OpenedClosedOpeneD  <: ThreeBoundaries ; OpenedClosedOpened = OpenedClosedOpeneD()
+immutable  OpenedClosedCloseD  <: ThreeBoundaries ; OpenedClosedClosed = OpenedClosedCloseD()
+immutable  ClosedOpenedOpeneD  <: ThreeBoundaries ; ClosedOpenedOpened = ClosedOpenedOpeneD()
+immutable  ClosedOpenedCloseD  <: ThreeBoundaries ; ClosedOpenedClosed = ClosedOpenedCloseD()
+immutable  ClosedClosedOpeneD  <: ThreeBoundaries ; ClosedClosedOpened = ClosedClosedOpeneD()
+immutable  ClosedClosedCloseD  <: ThreeBoundaries ; ClosedClosedClosed = ClosedClosedCloseD()
 
 
 
@@ -53,8 +53,8 @@ end
 
 FlexibleInterval{S,T,A}(::Type{T}, ::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(lo,hi)
 FlexibleInterval{S,T}(::Type{T}, lo::S, hi::S) = FlexibleInterval{S,T,A}(T, nullFunction, lo, hi)
-FlexibleInterval{S,A}(::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(T, nullFunction, lo, hi)
-
+FlexibleInterval{S,A}(::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(ClosedCloseD, A, lo, hi)
+FlexibleInterval{S}(::Type{A}, lo::S, hi::S)   = FlexibleInterval{S,T,A}(ClosedCloseD, nullFunction, lo, hi)
 
 
 
