@@ -9,6 +9,7 @@ import Base: hash, convert, promote_rule,
     isequal, isless, 
     (==), (!=), (<), (<=), (>=), (>),
     (+),(-),(*),(/),(\),(%),(^),(//),
+    fma,
     log, log1p, log2, log10, exp, expm1,
     sin, cos, tan, csc, sec, cot,
     sinh, cosh, tanh, csch, sech, coth,
@@ -23,7 +24,7 @@ export show, showcompact, showall,  # sometimes necessary (q.v. Nemo/arb)
     ispos, isneg, isnormal, ntneg, ntnan, ntnormal,
     ispow2, prevpow2, nextpow2, frexp, ldexp,
     abs, sqrt, abs2, hypot,
-    sqr
+    sqr, fma
 
 
 include("type/Flexival.jl")
