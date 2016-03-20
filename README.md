@@ -1,0 +1,2 @@
+# FlexibleInterval.jl
+computable surprise
