@@ -1,6 +1,6 @@
-MaybeFunction = Nullable{Function}
-nullFunction  = MaybeFunction()
-typealias       maybeFunction Union{Function, MaybeFunction}
+FunctionMaybe = Nullable{Function}
+nullFunction  = FunctionMaybe()
+typealias       MaybeFunction Union{Function, FunctionMaybe}
 
 Base.isnull(x::Function) = false
 
@@ -10,41 +10,44 @@ abstract  OneBoundary          <: AnyBoundaries
 abstract  TwoBoundaries        <: AnyBoundaries
 abstract  ThreeBoundaries      <: AnyBoundaries
 
-abstract   Opened              <: OneBoundary
-abstract   Closed              <: OneBoundary
+immutable  OPened              <: OneBoundary     ; Opened             = OPened()
+immutable  CLosed              <: OneBoundary     ; Closed             = CLosed()
 
-abstract   OpenedOpened        <: TwoBoundaries
-abstract   OpenedClosed        <: TwoBoundaries
-abstract   ClosedOpened        <: TwoBoundaries
-abstract   ClosedClosed        <: TwoBoundaries
+immutable  OPenedOPened        <: TwoBoundaries   ; OpenedOpened       = OPenedOPened()      
+immutable  OPenedCLosed        <: TwoBoundaries   ; OpenedClosed       = OPenedCLosed()      
+immutable  CLosedOPened        <: TwoBoundaries   ; ClosedOpened       = CLosedOPened()      
+immutable  CLosedCLosed        <: TwoBoundaries   ; ClosedClosed       = CLosedCLosed()      
 
-abstract   OpenedOpenedOpened  <: ThreeBoundaries
-abstract   OpenedOpenedClosed  <: ThreeBoundaries
-abstract   OpenedClosedOpened  <: ThreeBoundaries
-abstract   OpenedClosedClosed  <: ThreeBoundaries
-abstract   ClosedOpenedOpened  <: ThreeBoundaries
-abstract   ClosedOpenedClosed  <: ThreeBoundaries
-abstract   ClosedClosedOpened  <: ThreeBoundaries
-abstract   ClosedClosedClosed  <: ThreeBoundaries
+immutable  OPenedOPenedOPened  <: ThreeBoundaries ; OpenedOpenedOpened = OPenedOPenedOPened()
+immutable  OPenedOPenedCLosed  <: ThreeBoundaries ; OpenedOpenedClosed = OPenedOPenedCLosed()
+immutable  OPenedCLosedOPened  <: ThreeBoundaries ; OpenedClosedOpened = OPenedCLosedOPened()
+immutable  OPenedCLosedCLosed  <: ThreeBoundaries ; OpenedClosedClosed = OPenedCLosedCLosed()
+immutable  CLosedOPenedOPened  <: ThreeBoundaries ; ClosedOpenedOpened = CLosedOPenedOPened()
+immutable  CLosedOPenedCLosed  <: ThreeBoundaries ; ClosedOpenedClosed = CLosedOPenedCLosed()
+immutable  CLosedCLosedOPened  <: ThreeBoundaries ; ClosedClosedOpened = CLosedCLosedOPened()
+immutable  CLosedCLosedCLosed  <: ThreeBoundaries ; ClosedClosedClosed = CLosedCLosedCLosed()
 
 
 
-abstract          AbsInterval{     Surface,       Tension                      } <: Number
+abstract          AbsInterval{     Surface,       Tension                  } <: Number
 
                              #   type covering   configures     perceptual
                              #   value-context   boundaries     values map
 
-abstract  AbsFlexibleInterval{     Surface,       Tension,        Action       } <: AbsInterval{ Surface, Tension }
+abstract  AbsFlexibleInterval{     Surface,       Tension,        Action   } <: AbsInterval{ Surface, Tension }
 
 
 immutable FlexibleInterval{ Surface <: Real, 
-                            Tension <: Tuple, 
+                            Tension <: AnyBoundaries, 
                             Action  <: MaybeFunction } <: AbsFlexibleInterval{Surface,Tension,Action}
     lo::Surface
     hi::Surface
     
     FlexibleInterval{S}(lo::S,hi::S) = (lo <= hi) ? new(lo,hi) : new(hi,lo)
 end
+
+
+
 
 
 
