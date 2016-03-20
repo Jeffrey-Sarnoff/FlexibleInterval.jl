@@ -5,7 +5,7 @@ typealias       MaybeFunction Union{Function, FunctionMaybe}
 Base.isnull(x::Function) = false
 
 
-abstract AnyBoundaries
+abstract  AnyBoundaries
 abstract  OneBoundary          <: AnyBoundaries
 abstract  TwoBoundaries        <: AnyBoundaries
 abstract  ThreeBoundaries      <: AnyBoundaries
