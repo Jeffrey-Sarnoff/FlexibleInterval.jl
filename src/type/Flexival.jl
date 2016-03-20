@@ -39,7 +39,7 @@ abstract  AbsFlexibleInterval{     Surface,       Tension,        Action   } <: 
 
 immutable FlexibleInterval{ Surface <: Real, 
                             Tension <: AnyBoundaries, 
-                            Action  <: MaybeFunction } <: AbsFlexibleInterval{Surface,Tension,Action}
+                            Action  <: FunctionMaybe } <: AbsFlexibleInterval{Surface,Tension,Action}
     lo::Surface
     hi::Surface
     
@@ -49,11 +49,12 @@ end
 
 
 
+FlexibleInterval{S<:Real,T<:AnyBoundaries,A<:FunctionMaybe}(boundaries::T, action::A, lo::S,hi::S) =
+    FlexibleInterval{S,T,A}(lo,hi)
 
-
-FlexibleInterval{S,T<:AnyBoundaries,A<:MaybeFunction}(::Type{T}, ::Type{A}, lo::S, hi::S) = FlexibleInterval(lo,hi)
+FlexibleInterval{S,T<:AnyBoundaries,A<:FunctionMaybe}(::Type{T}, ::Type{A}, lo::S, hi::S) = FlexibleInterval(lo,hi)
 FlexibleInterval{S,T<:AnyBoundaries}(::Type{T}, lo::S, hi::S) = FlexibleInterval(T, nullFunction, lo, hi)
-FlexibleInterval{S,A<:MaybeFunction}(::Type{A}, lo::S, hi::S) = FlexibleInterval(ClosedCloseD, A, lo, hi)
+FlexibleInterval{S,A<:FunctionMaybe}(::Type{A}, lo::S, hi::S) = FlexibleInterval(ClosedCloseD, A, lo, hi)
 FlexibleInterval{S}(lo::S, hi::S)   = FlexibleInterval(ClosedCloseD, nullFunction, lo, hi)
 
 
