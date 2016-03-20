@@ -1,13 +1,14 @@
 
 
-         #                 type covering   configures
-         #                 value-context   boundaries
+abstract       AnyInterval{     Surface,       Tension                      } <: Number
 
-abstract AbstractInterval{    Surface,      Tension                }   <: Number
+        #                     type covering   configures     perceptual
+        #                     value-context   boundaries     values map
 
-         #                 type covering   configures    perceptual
-         #                 value-context   boundaries    values map
+abstract       AnyFlexival{     Surface,       Tension,        Action       } <: AnyInterval{ Surface, Tension }
 
-immutable FlexibleInterval{   Surface,      Tension,       Action   } <: AnyInterval{ Surface, Tension }
+
+immutable FlexibleInterval{ Surface<:Real, Tension<:Tuple, Action:<Function } <: AnyFlexival{Surface,Tension,Action}
+
 
 
