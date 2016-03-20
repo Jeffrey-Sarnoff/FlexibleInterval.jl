@@ -30,6 +30,8 @@ export show, showcompact, showall,  # sometimes necessary (q.v. Nemo/arb)
 include("type/Flexival.jl")
 include("type/io.jl")
 include("type/generous.jl")
+include("type/predicates.jl")
+include("type/ordering.jl")
 
 
 end
