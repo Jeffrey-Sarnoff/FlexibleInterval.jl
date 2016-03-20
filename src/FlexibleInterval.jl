@@ -24,7 +24,7 @@ export show, showcompact, showall,  # sometimes necessary (q.v. Nemo/arb)
     ispos, isneg, isnormal, ntneg, ntnan, ntnormal,
     ispow2, prevpow2, nextpow2, frexp, ldexp,
     abs, sqrt, abs2, hypot,
-    sqr, fma
+    sqr, fma, fms, fam, fsm
 
 
 include("type/Flexival.jl")
