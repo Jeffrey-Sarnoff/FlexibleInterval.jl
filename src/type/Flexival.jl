@@ -51,9 +51,9 @@ end
 
 
 
-FlexibleInterval{S,T,A}(::Type{T}, ::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(lo,hi)
-FlexibleInterval{S,T}(::Type{T}, lo::S, hi::S) = FlexibleInterval{S,T,A}(T, nullFunction, lo, hi)
-FlexibleInterval{S,A}(::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(ClosedCloseD, A, lo, hi)
+FlexibleInterval{S,T<:AnyBoundaries,A<:MaybeFunction}(::Type{T}, ::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(lo,hi)
+FlexibleInterval{S,T<:AnyBoundaries}(::Type{T}, lo::S, hi::S) = FlexibleInterval{S,T,A}(T, nullFunction, lo, hi)
+FlexibleInterval{S,A<:MaybeFunction}(::Type{A}, lo::S, hi::S) = FlexibleInterval{S,T,A}(ClosedCloseD, A, lo, hi)
 FlexibleInterval{S}(::Type{A}, lo::S, hi::S)   = FlexibleInterval{S,T,A}(ClosedCloseD, nullFunction, lo, hi)
 
 
