@@ -12,17 +12,20 @@ abstract  ThreeBoundaries      <: AnyBoundaries
 
 
 
-abstract          AbsInterval{     Surface,       Tension                  } <: Number
+abstract          
+AbsInterval{          Surface,       Tension                  } <: Number
 
                              #   type covering   configures     perceptual
                              #   value-context   boundaries     values map
 
-abstract  AbsFlexibleInterval{     Surface,       Tension,        Action   } <: AbsInterval{ Surface, Tension }
+abstract  
+AbsFlexibleInterval{  Surface,       Tension,        Action   } <: AbsInterval{ Surface, Tension }
 
 
-immutable FlexibleInterval{ Surface <: Real, 
-                            Tension <: AnyBoundaries, 
-                            Action  <: FunctionMaybe } <: AbsFlexibleInterval{Surface,Tension,Action}
+immutable 
+FlexibleInterval{     Surface <: Real, 
+                      Tension <: AnyBoundaries, 
+                      Action  <: FunctionMaybe  } <: AbsFlexibleInterval{Surface,Tension,Action}
     lo::Surface
     hi::Surface
     
