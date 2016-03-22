@@ -27,7 +27,7 @@ export show, showcompact, showall,  # sometimes necessary (q.v. Nemo/arb)
     sqr, fma, fms, fam, fsm
 
 
-include("type/Flexival.jl")
+include("type/FlexibleInterval.jl")
 include("type/io.jl")
 include("type/generous.jl")
 include("type/predicates.jl")
