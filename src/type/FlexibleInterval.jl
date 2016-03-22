@@ -1,12 +1,36 @@
-FunctionMayBe  = Nullable{Function};  typealias  MaybeFunction Union{Function, FunctionMayBe}
-FunctionalNull = FunctionMayBe()
+MaybeFunction = Nullable{Function}
+const nullFunction = MaybeFunction()
+typealias AkoFunction Union{Function, MaybeFunction}
 
-Base.isnull(x::FunctionMayBe) = x.isnull
+Base.isnull(x::MaybeFunction) = x.isnull
 Base.isnull(x::Function)      = false
 
 
+abstract  Boundary
 
-abstract  AnyBoundaries
+abstract  MateralBounding      <: Boundary
+abstract  Wood                 <: MaterialBounding
+abstract  Clay                 <: MaterialBounding
+
+abstract  BoundingContext      <: Boundary
+abstract  Imprecise            <: BoundingContext
+abstract  Precise              <: Imprecise
+abstract  Inaccurate           <: BoundingContext
+abstract  Accurate             <: Inaccurate
+
+abstract  BoundingCoverness    <: Boundary
+abstract  Spread               <: BoundingCoverness
+abstract  Shared               <: Spread
+abstract  Throughout           <: BoundingCoverness
+abstract  Approached           <: Throughout
+
+
+
+abstract  AnyBoundaries        <: Boundary
+
+
+
+
 abstract  OneBoundary          <: AnyBoundaries
 abstract  TwoBoundaries        <: AnyBoundaries
 abstract  ThreeBoundaries      <: AnyBoundaries
@@ -33,26 +57,6 @@ FlexibleInterval{     Surface <: Real,
     FlexibleInterval{S}(lo::S,hi::S) = (lo <= hi) ? new(lo,hi) : new(hi,lo)
 end
 
-
-
-
-
-immutable  OpeneD              <: OneBoundary     end; Opened             = OpeneD()
-immutable  CloseD              <: OneBoundary     end; Closed             = CloseD()
-
-immutable  OpenedOpeneD        <: TwoBoundaries   end; OpenedOpened       = OpenedOpeneD()      
-immutable  OpenedCloseD        <: TwoBoundaries   end; OpenedClosed       = OpenedCloseD()      
-immutable  ClosedOpeneD        <: TwoBoundaries   end; ClosedOpened       = ClosedOpeneD()      
-immutable  ClosedCloseD        <: TwoBoundaries   end; ClosedClosed       = ClosedCloseD()      
-
-immutable  OpenedOpenedOpeneD  <: ThreeBoundaries end; OpenedOpenedOpened = OpenedOpenedOpeneD()
-immutable  OpenedOpenedCloseD  <: ThreeBoundaries end; OpenedOpenedClosed = OpenedOpenedCloseD()
-immutable  OpenedClosedOpeneD  <: ThreeBoundaries end; OpenedClosedOpened = OpenedClosedOpeneD()
-immutable  OpenedClosedCloseD  <: ThreeBoundaries end; OpenedClosedClosed = OpenedClosedCloseD()
-immutable  ClosedOpenedOpeneD  <: ThreeBoundaries end; ClosedOpenedOpened = ClosedOpenedOpeneD()
-immutable  ClosedOpenedCloseD  <: ThreeBoundaries end; ClosedOpenedClosed = ClosedOpenedCloseD()
-immutable  ClosedClosedOpeneD  <: ThreeBoundaries end; ClosedClosedOpened = ClosedClosedOpeneD()
-immutable  ClosedClosedCloseD  <: ThreeBoundaries end; ClosedClosedClosed = ClosedClosedCloseD()
 
 
 
