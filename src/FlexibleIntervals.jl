@@ -1,8 +1,5 @@
 module FlexibleIntervals
 
-!isdefined(Float) && typealias Float AbstractFloat;
-
-
 import Base: hash, convert, promote_rule,
     string, show, showcompact, showall,
     isnull, 
@@ -21,6 +18,8 @@ import Base: hash, convert, promote_rule,
     asinh, acosh, atanh, acsch, asech, acoth
     
     
+import JAS: Float
+
     
     
     
