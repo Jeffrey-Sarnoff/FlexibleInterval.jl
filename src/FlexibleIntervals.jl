@@ -1,4 +1,7 @@
-module FlexibleInterval.jl
+module FlexibleIntervals
+
+!isdefined(Float) && typealias Float AbstractFloat;
+
 
 import Base: hash, convert, promote_rule,
     string, show, showcompact, showall,
