@@ -6,7 +6,13 @@ Base.isnull(x::MaybeFunction) = x.isnull
 Base.isnull(x::Function)      = false
 
 
+abstract  Multivalued
+
+abstract  Surface
+abstract  SurfaceAction        <: Surface
 abstract  Boundary
+abstract  BoundaryMaterial     <: Boundary
+
 
 abstract  MateralBounding      <: Boundary
 abstract  Wood                 <: MaterialBounding
