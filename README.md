@@ -1,2 +1,2 @@
-## FlexibleInterval.jl
+## FlexibleIntervals.jl
 computable surprise
