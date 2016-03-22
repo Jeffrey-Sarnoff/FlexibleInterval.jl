@@ -2,6 +2,7 @@ module FlexibleInterval.jl
 
 import Base: hash, convert, promote_rule,
     string, show, showcompact, showall,
+    isnull, 
     isnan, isinf, isfinite, issubnormal,
     sign, signbit, copysign, flipsign,
     ispow2, prevpow2, nextpow2, frexp, ldexp,
@@ -21,6 +22,7 @@ import Base: hash, convert, promote_rule,
     
     
 export show, showcompact, showall,  # sometimes necessary (q.v. Nemo/arb)
+    isnull,
     ispos, isneg, isnormal, ntneg, ntnan, ntnormal,
     ispow2, prevpow2, nextpow2, frexp, ldexp,
     abs, sqrt, abs2, hypot,
