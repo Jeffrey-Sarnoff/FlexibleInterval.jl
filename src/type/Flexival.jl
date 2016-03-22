@@ -1,8 +1,9 @@
-FunctionMaybe = Nullable{Function}
-nullFunction  = FunctionMaybe()
-typealias       MaybeFunction Union{Function, FunctionMaybe}
+FunctionMayBe  = Nullable{Function};  typealias  MaybeFunction Union{Function, FunctionMayBe}
+FunctionalNull = FunctionMayBe()
 
-Base.isnull(x::Function) = false
+Base.isnull(x::FunctionMayBe) = x.isnull
+Base.isnull(x::Function)      = false
+
 
 
 abstract  AnyBoundaries
