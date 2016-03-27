@@ -18,7 +18,7 @@ import Base: hash, convert, promote_rule,
     asinh, acosh, atanh, acsch, asech, acoth
     
     
-import JAS: Float
+import Genera: Float, StdFloat
 
     
     
